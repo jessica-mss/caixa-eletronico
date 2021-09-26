@@ -52,7 +52,7 @@ public class ClienteController {
 	
 	public HttpEntity<?> Autentication (@RequestBody UserLogin user) throws NoSuchAlgorithmException {
 		String acesso = service.logar(user);
-		service.SessaoEstaExpirada(acesso);
+		
 		if(!acesso.isEmpty()) {
 						
 			return ResponseEntity.ok(new Message(acesso));

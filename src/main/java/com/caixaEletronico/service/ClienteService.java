@@ -30,7 +30,7 @@ public class ClienteService {
 
 			MD5 md5 = new MD5(user.getSenha());
 			if (md5.criarMD5().equalsIgnoreCase(cliente.getSenha())) {
-				cliente.setAcesso(new MD5(cliente.getNomeCliente() + cliente.getConta()).criarMD5());
+				cliente.setAcesso(new MD5(cliente.getNomeCliente() + cliente.getConta()+ LocalDateTime.now().toString()).criarMD5());
 				cliente.setDataAcesso(LocalDateTime.now());
 				repository.save(cliente);
 				return cliente.getAcesso();
