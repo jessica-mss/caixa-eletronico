@@ -21,7 +21,7 @@ public class CarregarBaseCliente {
 
 		return args -> {
 			log.info("carregando" + repository.save(new Cliente(1, "033", "santander", "00234", 1000, "xuxa meneghel",
-					"login", "827ccb0eea8a706c4c34a16891f84e7b", "12345678", "00001", LocalDateTime.now())));
+					"login", "827ccb0eea8a706c4c34a16891f84e7b", "12345678", null, LocalDateTime.now())));
 
 		};
 	}

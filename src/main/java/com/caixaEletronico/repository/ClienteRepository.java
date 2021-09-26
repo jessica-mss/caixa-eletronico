@@ -13,4 +13,5 @@ public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 	//public List<Cliente> findAllByNomeContainingIgnoreCase(String nome);
 	//public List<Cliente> findAllByAgencia(String agencia);
 	public List<Cliente> findByConta(String conta);
+	public Cliente findByAcesso(String acesso);
 }

@@ -6,17 +6,20 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.caixaEletronico.configuration.MD5;
 import com.caixaEletronico.model.Cliente;
+import com.caixaEletronico.model.Message;
 import com.caixaEletronico.model.UserLogin;
 import com.caixaEletronico.repository.ClienteRepository;
 import com.caixaEletronico.service.ClienteService;
@@ -44,13 +47,16 @@ public class ClienteController {
 	    return repository.save(novoCliente);
 	  }
 
-	@PostMapping("/logar")
+	@PostMapping(value = "/logar", produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseStatus(value = HttpStatus.MULTIPLE_CHOICES)
+	
 	public HttpEntity<?> Autentication (@RequestBody UserLogin user) throws NoSuchAlgorithmException {
-		if(service.logar(user)) {
-			return ResponseEntity.ok(new MD5("logado").criarMD5());
-			//TODO trocar resposta do m�todo por MD5 de login
-		}
+		String acesso = service.logar(user);
+		service.SessaoEstaExpirada(acesso);
+		if(!acesso.isEmpty()) {
+						
+			return ResponseEntity.ok(new Message(acesso));
+	}
 		return ResponseEntity.EMPTY;
 
 	}
