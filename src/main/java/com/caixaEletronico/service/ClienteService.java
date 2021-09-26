@@ -1,11 +1,13 @@
 package com.caixaEletronico.service;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.caixaEletronico.configuration.MD5;
 import com.caixaEletronico.model.Cliente;
 import com.caixaEletronico.model.UserLogin;
 import com.caixaEletronico.repository.ClienteRepository;
@@ -15,7 +17,7 @@ public class ClienteService {
 	@Autowired
 	ClienteRepository repository;
 
-		public boolean logar(UserLogin user) {
+		public boolean logar(UserLogin user) throws NoSuchAlgorithmException {
 		// TODO Auto-generated method stub
 		List<Cliente> clienteEncontrado = new ArrayList<>();
 		clienteEncontrado = repository.findByConta(user.getConta());
@@ -24,7 +26,8 @@ public class ClienteService {
 		}else {
 			Cliente cliente = clienteEncontrado.get(0);
 			
-			if (user.getSenha().equals(cliente.getSenha())) {
+		MD5 md5 = new MD5(user.getSenha());
+			if (md5.criarMD5().equalsIgnoreCase(cliente.getSenha())) {
 				return true;
 			}
 		}

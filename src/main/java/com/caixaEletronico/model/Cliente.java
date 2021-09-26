@@ -50,6 +50,27 @@ public class Cliente {
 	private LocalDateTime dataAcesso;
 
 	
+	public Cliente() {
+	
+}
+
+	public Cliente(long idUsuario, @NotNull String codigoBanco, @NotNull String nomeBanco, @NotNull String conta,
+			@NotNull float saldoConta, @NotNull String nomeCliente, @NotNull String login, @NotNull String senha,
+			String telefoneCliente, String acesso, LocalDateTime dataAcesso) {
+		super();
+		this.idUsuario = idUsuario;
+		this.codigoBanco = codigoBanco;
+		this.nomeBanco = nomeBanco;
+		this.conta = conta;
+		this.saldoConta = saldoConta;
+		this.nomeCliente = nomeCliente;
+		this.login = login;
+		this.senha = senha;
+		this.telefoneCliente = telefoneCliente;
+		this.acesso = acesso;
+		this.dataAcesso = dataAcesso;
+	}
+
 	//Getters & Setters
 	public String getCodigoBanco() {
 		return codigoBanco;

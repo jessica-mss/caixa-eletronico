@@ -1,5 +1,6 @@
 package com.caixaEletronico.controller;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.caixaEletronico.configuration.MD5;
 import com.caixaEletronico.model.Cliente;
 import com.caixaEletronico.model.UserLogin;
 import com.caixaEletronico.repository.ClienteRepository;
@@ -23,6 +25,8 @@ import com.caixaEletronico.service.ClienteService;
 @RequestMapping("/clientes")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class ClienteController {
+
+	private MD5 MD5;
 	
 	@Autowired
 	private ClienteRepository repository;
@@ -42,9 +46,9 @@ public class ClienteController {
 
 	@PostMapping("/logar")
 	@ResponseStatus(value = HttpStatus.MULTIPLE_CHOICES)
-	public HttpEntity<?> Autentication (@RequestBody UserLogin user) {
+	public HttpEntity<?> Autentication (@RequestBody UserLogin user) throws NoSuchAlgorithmException {
 		if(service.logar(user)) {
-			return ResponseEntity.ok("hasheada");
+			return ResponseEntity.ok(new MD5("logado").criarMD5());
 			//TODO trocar resposta do m�todo por MD5 de login
 		}
 		return ResponseEntity.EMPTY;
