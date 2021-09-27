@@ -9,9 +9,9 @@ import com.caixaEletronico.model.Cliente;
 
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Long> {
-	public Cliente findByAcesso (String acesso);
 	//public Optional<Cliente> findByUsuario(String usuario);
 	//public List<Cliente> findAllByNomeContainingIgnoreCase(String nome);
 	//public List<Cliente> findAllByAgencia(String agencia);
-	//public List<Cliente> findByConta(String conta);
+	public List<Cliente> findByConta(String conta);
+	public Cliente findByAcesso(String acesso);
 }
