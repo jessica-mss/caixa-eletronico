@@ -1,52 +1,52 @@
 package com.caixaEletronico.controller;
 
 import java.util.List;
-import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.caixaEletronico.model.UserLogin;
-import com.caixaEletronico.model.Usuario;
-import com.caixaEletronico.repository.UsuarioRepository;
-import com.caixaEletronico.service.UsuarioService;
+
+import com.caixaEletronico.model.AcessoRequest;
+import com.caixaEletronico.model.Cliente;
+import com.caixaEletronico.model.ClienteRequest;
+import com.caixaEletronico.model.ClienteResponse;
+import com.caixaEletronico.repository.ClienteRepository;
 
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping("/clientes")
 @CrossOrigin(origins = "*", allowedHeaders = "*")
-public class UsuarioController {
+public class ClienteController {
 	
 	@Autowired
-	private UsuarioService usuarioService;
-	
-	@Autowired
-	private UsuarioRepository repository;
-	
-	@PostMapping("/logar")
-	public ResponseEntity<UserLogin> Autentication (@RequestBody Optional<UserLogin> user) {
-		return usuarioService.Logar(user).map(resp -> ResponseEntity.ok(resp))
-				.orElse(ResponseEntity.status(HttpStatus.UNAUTHORIZED).build());
-	}
-	
-	@PostMapping("/cadastrar")
-	public ResponseEntity<Usuario> Post(@RequestBody Usuario usuario){
-		return ResponseEntity.status(HttpStatus.CREATED)
-				.body(usuarioService.CadastrarUsuario(usuario));
-	}
+	private ClienteRepository repository;
 	
 	@GetMapping
-	public ResponseEntity<List<Usuario>> GetAll() {
-		return ResponseEntity.ok(repository.findAll());
+	public ResponseEntity<ClienteResponse> Get(@RequestBody AcessoRequest acessoRequest) {
+		Cliente cliente = repository.findByAcesso(acessoRequest.getAcesso());
+		
+		return ResponseEntity.ok(new ClienteResponse(cliente.getBanco(),cliente.getConta(),cliente.getNomeCliente(),cliente.getTelefoneCliente()));
 	}
-//	
+	
+//	@PostMapping("/cadastrar")
+//	Cliente novoCliente(@RequestBody Cliente novoCliente) {
+//	    return repository.save(novoCliente);
+//	  }
+	
+	@PutMapping("/")
+	public Cliente Put (@RequestBody ClienteRequest clienteRequest) {
+		Cliente cliente = repository.findByAcesso(clienteRequest.getAcesso());
+		cliente.setNomeCliente(clienteRequest.getNomeCliente());
+		cliente.setTelefoneCliente(clienteRequest.getTelefoneCliente());
+		return repository.save(cliente);
+	} 
+
+
 //	@GetMapping("/{id}")
 //	public ResponseEntity<Usuario> GetById(@PathVariable long id) {
 //		return repository.findById(id)
