@@ -41,8 +41,11 @@ public class ClienteService {
 
 	public boolean SessaoEstaExpirada(String acesso) {
 		Cliente clienteEncontrado = repository.findByAcesso(acesso);
+		long tempoLogado = 16;
 
-		long tempoLogado = Duration.between(clienteEncontrado.getDataAcesso(), LocalDateTime.now()).toMinutes();
+		if(clienteEncontrado!=null){
+			tempoLogado = Duration.between(clienteEncontrado.getDataAcesso(), LocalDateTime.now()).toMinutes();
+		}
 
 		return tempoLogado > 15;
 	}

@@ -13,7 +13,7 @@ public class CarregarBaseBancos {
 private static final Logger log = LoggerFactory.getLogger(CarregarBaseBancos.class);
 	
 	@Bean
-	CommandLineRunner initDatabase(BancoRepository repository) {
+	CommandLineRunner initDatabaseBanco(BancoRepository repository) {
 		
 		return args -> {
 			log.info("carregando" + repository.save(new Banco("003", "Banco da Amazônia")));

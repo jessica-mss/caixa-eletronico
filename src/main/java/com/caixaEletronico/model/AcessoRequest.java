@@ -1,12 +1,10 @@
 package com.caixaEletronico.model;
 
-public class Message {
+public class AcessoRequest {
 	
 	private String acesso;
-	
-	public Message(String acesso) {
-		this.acesso = acesso;
-	}
+
+	public AcessoRequest() {} 
 
 	public String getAcesso() {
 		return acesso;
@@ -16,4 +14,9 @@ public class Message {
 		this.acesso = acesso;
 	}
 
+	public AcessoRequest(String acesso) {
+		super();
+		this.acesso = acesso;
+	}
+	
 }
