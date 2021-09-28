@@ -1,6 +1,6 @@
-# Caixa Multibanco Eletrônico 
+# Accent ATM
 
-## Projeto Accenture Academia Java Fast 
+## Projeto Accenture Academia Java Fast - Caixa Multibanco Eletrônico 24h
 
 A equipe nº 3, da academia Java fast da Accenture, que teve como desafio o case 3, referente a construção de uma API REST, 
 em que o cliente poderá cadastrar, alterar, remover e realizar consultas, tal qual um caixa eletrônico, 
@@ -11,14 +11,14 @@ A referida API simula uma operação de um caixa eletrônico podendo o usuário 
 
 Deverá ser criada uma aplicação de gerenciamento de caixa eletrônico, seguindo as regras: 
 
-- [ ] Para fazer qualquer operação o usuário deve estar logado no banco onde possuí conta; 
-- [ ] Cada login tem irá gerar um código de acesso que vale 15 minutos; 
-- [ ] O usuário apenas pode fazer saques se possuir saldo em sua conta; 
-- [ ] Caso não haja saldo na conta deve retornar a mensagem “SALDO INSUFICIÊNTE”; 
-- [ ] O banco trabalha com cédulas de R$2,00, R$5,00, R$10,00 e R$50,00 para saques; 
-- [ ] Cada caixa tem um reservatório com capacidade de 200 células para cada nota; 
-- [ ] Caso não haja cédulas suficientes para atender o saque do cliente deve exibir a mensagem “VALOR INDISPONÍVEL, PROCURE OUTRO CAIXA”;
-- [ ] Os dados que o cliente pode alterar da conta são telefone e nome. 
+- [x] Para fazer qualquer operação o usuário deve estar logado no banco onde possuí conta; 
+- [x] Cada login tem irá gerar um código de acesso que vale 15 minutos; 
+- [x] O usuário apenas pode fazer saques se possuir saldo em sua conta; 
+- [x] Caso não haja saldo na conta deve retornar a mensagem “SALDO INSUFICIÊNTE”; 
+- [x] O banco trabalha com cédulas de R$2,00, R$5,00, R$10,00 e R$50,00 para saques; 
+- [x] Cada caixa tem um reservatório com capacidade de 200 células para cada nota; 
+- [x] Caso não haja cédulas suficientes para atender o saque do cliente deve exibir a mensagem “VALOR INDISPONÍVEL, PROCURE OUTRO CAIXA”;
+- [x] Os dados que o cliente pode alterar da conta são telefone e nome. 
 
 ## Rotas Criadas ⚙️ 
 
@@ -148,5 +148,5 @@ Response: Erro – 500 – Erro na aplicação:
 
 ## Desenvolvedoras 👑
 
-| [<img src="https://avatars.githubusercontent.com/u/79282971?v=4" width=115><br><sub>Olga Mahin 👩🏽‍💻🚀</sub>](https://github.com/omahin) |  [<img src="https://avatars.githubusercontent.com/u/83045525?v=4" width=115><br><sub>Jéssica Marques 👩🏽‍💻🚀</sub>](https://github.com/jessica-mss) |  [<img src="https://avatars.githubusercontent.com/u/82973465?v=4" width=115><br><sub>Lílian Guedes 👩‍💻🚀</sub>](https://github.com/Lilian411) | [<img src="https://avatars.githubusercontent.com/u/79282971?v=4" width=115><br><sub>Deisi 👩‍💻🚀</sub>](https://github.com/omahin) | [<img src="https://avatars.githubusercontent.com/u/62125601?v=4" width=115><br><sub>Nath 👩‍💻🚀</sub>](https://github.com/NathiMick) |
+| [<img src="https://avatars.githubusercontent.com/u/79282971?v=4" width=115><br><sub>Olga Mahin 👩🏽‍💻🚀</sub>](https://github.com/omahin) |  [<img src="https://avatars.githubusercontent.com/u/83045525?v=4" width=115><br><sub>Jéssica Marques 👩🏽‍💻🚀</sub>](https://github.com/jessica-mss) |  [<img src="https://avatars.githubusercontent.com/u/82973465?v=4" width=115><br><sub>Lílian Guedes 👩‍💻🚀</sub>](https://github.com/Lilian411) | [<img src="https://avatars.githubusercontent.com/u/79338473?v=4" width=115><br><sub>Deisi 👩‍💻🚀</sub>](https://github.com/Deisiane16) | [<img src="https://avatars.githubusercontent.com/u/62125601?v=4" width=115><br><sub>Nath 👩‍💻🚀</sub>](https://github.com/NathiMick) |
 | :---: | :---: | :---: | :---: | :---:
