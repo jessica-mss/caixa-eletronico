@@ -24,7 +24,6 @@ public class ClienteService {
 		List<Cliente> clienteEncontrado = new ArrayList<>();
 		clienteEncontrado = repository.findByConta(user.getConta());
 		if (clienteEncontrado.isEmpty()) {
-			// deve devolver erro de usu�rio n�o encontrado
 		} else {
 			Cliente cliente = clienteEncontrado.get(0);
 
